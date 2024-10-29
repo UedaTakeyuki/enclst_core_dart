@@ -1,12 +1,19 @@
 import 'package:flutter_test/flutter_test.dart';
-
+import 'package:http/http.dart' as http;
 import 'package:enclst_core_dart/enclst_core_dart.dart';
 
-void main() {
+void main() async {
+  var enclistStr = await getText();
   test('adds one to input values', () {
-    final calculator = Calculator();
-    expect(calculator.addOne(2), 3);
-    expect(calculator.addOne(-7), -6);
-    expect(calculator.addOne(0), 1);
+    final enclst = Enclst(enclistStr);
+    expect(enclst.title, "Journal");
   });
+}
+
+Future<String> getText() async {
+  var uri = Uri.parse(
+      'https://raw.githubusercontent.com/UedaTakeyuki/EncLst/refs/heads/main/examples/EncycloList/lang/fr/journal/journal.enclst');
+  var response = await http.get(uri);
+  var text = response.body;
+  return text;
 }
