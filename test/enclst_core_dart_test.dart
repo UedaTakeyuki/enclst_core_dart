@@ -6,7 +6,12 @@ void main() async {
   var enclistStr = await getText();
   test('adds one to input values', () {
     final enclst = Enclst(enclistStr);
+    final items = enclst.items;
     expect(enclst.title, "Journal");
+    expect(items[0].title, "Courrier international");
+    expect(items[0].value.positionalValues[0],
+        "https://www.courrierinternational.com");
+    expect(items.length, 19);
   });
 }
 

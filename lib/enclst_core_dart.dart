@@ -24,7 +24,10 @@ class Enclst {
 
     // make items
     while (lines.isNotEmpty) {
-      items.add(Item(lines[0]));
+      var line = lines[0];
+      if (line != "") {
+        items.add(Item(lines[0]));
+      }
       lines.removeAt(0);
     }
   }
