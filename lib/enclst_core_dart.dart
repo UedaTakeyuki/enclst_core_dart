@@ -1,8 +1,9 @@
 library enclst_core_dart;
 
 import 'package:enclst_core_dart/item.dart';
+import 'package:enclst_core_dart/mixins/value_checker.dart';
 
-class Enclst {
+class Enclst with ValueChecker {
   String title = "";
   List<Item> items = [];
 
