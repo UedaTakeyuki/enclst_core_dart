@@ -1,11 +1,20 @@
 import 'package:flutter/foundation.dart';
 
 mixin ValueChecker {
-  // is this Path?
-  bool isPath(String s) {
+  // is this URL?
+  bool isURL(String s) {
     if (s.substring(0, 6) == "http://" ||
         s.substring(0, 7) == "https://" ||
         s.substring(0, 6) == "file://") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  // is this Path?
+  bool isPath(String s) {
+    if (isURL(s)) {
       return true;
     } else if (s.substring(0, 1) == "./" || s.substring(0, 0) == "/") {
       return true;
