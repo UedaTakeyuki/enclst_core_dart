@@ -3,9 +3,10 @@ import 'package:http/http.dart' as http;
 import 'package:enclst_core_dart/enclst_core_dart.dart';
 
 void main() async {
-  var enclistStr = await getText();
-  test('adds one to input values', () {
-    final enclst = Enclst(enclistStr);
+  test('adds one to input values', () async {
+//    final enclst = Enclst(enclistStr);
+    final enclst = await Enclst.createFromURL(
+        'https://raw.githubusercontent.com/UedaTakeyuki/EncLst/refs/heads/main/examples/EncycloList/lang/fr/journal/journal.enclst');
     final items = enclst.items;
     expect(enclst.title, "Journal");
     expect(items[0].title, "Courrier international");
@@ -21,4 +22,12 @@ Future<String> getText() async {
   var response = await http.get(uri);
   var text = response.body;
   return text;
+}
+
+Future<Enclst> enclstFromURL(String urlStr) async {
+  var uri = Uri.parse(urlStr);
+  var response = await http.get(uri);
+  var enclistStr = response.body;
+  final enclst = Enclst(enclistStr);
+  return enclst;
 }

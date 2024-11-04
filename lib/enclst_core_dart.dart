@@ -1,5 +1,6 @@
 library enclst_core_dart;
 
+import 'package:http/http.dart' as http;
 import 'package:enclst_core_dart/item.dart';
 import 'package:enclst_core_dart/mixins/value_checker.dart';
 
@@ -31,5 +32,13 @@ class Enclst with ValueChecker {
       }
       lines.removeAt(0);
     }
+  }
+
+  static Future<Enclst> createFromURL(String urlStr) async {
+    var uri = Uri.parse(urlStr);
+    var response = await http.get(uri);
+    var enclistStr = response.body;
+    final enclst = Enclst(enclistStr);
+    return enclst;
   }
 }
