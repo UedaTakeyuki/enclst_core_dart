@@ -18,4 +18,10 @@ void main() async {
             "https://raw.githubusercontent.com/UedaTakeyuki"),
         "https://raw.githubusercontent.com/UedaTakeyuki/Deutschland/menu.enclst");
   });
+
+  test('test nextEnclst', () async {
+    final next =
+        await e.nextEnclst("Deutschland/BayreutherFestspiele.enclst", "");
+    expect(next.title, "Bayreuther Festspiele");
+  });
 }

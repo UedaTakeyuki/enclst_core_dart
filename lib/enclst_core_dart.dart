@@ -83,4 +83,9 @@ class Enclst with ValueChecker {
       return (context.canonicalize(context.join(url, "..", path)));
     }
   }
+
+  nextEnclst(String path, String base_url) async {
+    var next = nextURL(path, base_url);
+    return await createFromURL(next);
+  }
 }
