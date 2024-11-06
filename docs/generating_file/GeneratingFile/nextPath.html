@@ -72,34 +72,52 @@
 
     </section>
     
+<section class="desc markdown">
+  <p>Calculate subsequent URL from the current URL that storeed in the member valuable of this enclst, and a parameter path that indicate a next enclst which is loading.
+Retuned nextURL is calculated as joind of the current url and path.
+You can optionally specify a base_url, which will be used instead of the current url.</p>
+<p>@param {string} currentURL Current URL.<br>
+@param {string} path Next path.<br>
+@param {string} base_url Base url of this path, or nil.<br>
+@returns {string} created URL as follows:</p>
+<ul>
+<li> if path is started from "http://", just return paht</li>
+<li> else if path is started from "/"
+<ul>
+<li> if base_url is not specified, return CurrentURL + path
+</li><li> if base_url is specified, return base_url + path
+</li></ul>
+</li><li> else, return URL(path, currentURL)
+</li></ul>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">nextPath(String path, {String v_root = &quot;&quot;}) {
-  if (isURL(path)) {
-    &#47;&#47; path is full url
-    return path;
-  } else if (path[0] == &quot;&#47;&quot;) {
-    &#47;&#47; URL - filename
-    String origin = (Uri.parse(ganeratingFilePath)).origin;
-    &#47;&#47; path is full path
-    if (v_root != &quot;&quot;) {
-      if (v_root[v_root.length - 1] == &#39;&#47;&#39;) {
-        &#47;&#47; remove trailing &#39;&#47;&#39;
-        v_root = v_root.substring(0, v_root.length - 1);
+    if (isURL(path)) {
+      &#47;&#47; path is full url
+      return path;
+    } else if (path[0] == &quot;&#47;&quot;) {
+      &#47;&#47; URL - filename
+      String origin = (Uri.parse(ganeratingFilePath)).origin;
+      &#47;&#47; path is full path
+      if (v_root != &quot;&quot;) {
+        if (v_root[v_root.length - 1] == &#39;&#47;&#39;) {
+          &#47;&#47; remove trailing &#39;&#47;&#39;
+          v_root = v_root.substring(0, v_root.length - 1);
+        }
+        origin = v_root;
       }
-      origin = v_root;
+      return origin + path;
+    } else {
+      &#47;&#47; path is relative path
+      var context = p.Context(style: p.Style.url);
+      return (context
+          .canonicalize(context.join(ganeratingFilePath, &quot;..&quot;, path)));
     }
-    return origin + path;
-  } else {
-    &#47;&#47; path is relative path
-    var context = p.Context(style: p.Style.url);
-    return (context
-        .canonicalize(context.join(ganeratingFilePath, &quot;..&quot;, path)));
-  }
-}</code></pre>
+  }</code></pre>
 </section>
 
 
