@@ -51,7 +51,7 @@ class Enclst with ValueChecker {
   You can optionally specify a base_url, which will be used instead of the current url.
 
   @param {string} currentURL Current URL.<br>
-  @param {string} path Next path.<br?
+  @param {string} path Next path.<br>
   @param {string} base_url Base url of this path, or nil.<br>
   @returns {string} created URL as follows:
   <ul>
