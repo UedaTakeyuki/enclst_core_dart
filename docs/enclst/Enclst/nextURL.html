@@ -73,45 +73,20 @@
     </section>
     
 <section class="desc markdown">
-  <ul>
-<li>Calculate subsequent URL from the Current URL and Next path</li>
-</ul>
-<p>@param {string} currentURL Current URL</p>
+  <p>Calculate subsequent URL from the Current URL and Next path</p>
+<p>@param {string} currentURL Current URL
+@param {string} path Next path
+@param {string} base_url Base url of this path, or nil.
+@returns {string} created URL as follows:</p>
 <ul>
-<li>@param {string} path Next path</li>
-<li>@param {string} base_url Base url of this path, or nil.</li>
-<li>@returns {string} created URL as follows:</li>
-<li>
+<li> if path is started from "http://", just return paht</li>
+<li> else if path is started from "/"
 <ul>
-
-<li>
-</li><li> if path is started from "http://", just return paht</li>
-
-<li>
-</li><li> else if path is started from "/"
-</li>
-<li>
-<ul>
-
-<li>
-<pre class="language-dart"><code>&lt;li&gt; if base_url is not specified, return CurrentURL + path
-</code></pre>
-</li>
-<li>
-<pre class="language-dart"><code>&lt;li&gt; if base_url is specified, return base_url + path
-</code></pre>
-</li>
-<li>
+<li> if base_url is not specified, return CurrentURL + path
+</li><li> if base_url is specified, return base_url + path
 </li></ul>
-</li>
-<li>
 </li><li> else, return URL(path, currentURL)
-</li>
-<li>
 </li></ul>
-</li>
-<li></li>
-</ul>
 </section>
 
 
