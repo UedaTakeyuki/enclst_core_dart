@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the nextEnclst method from the Enclst class, for the Dart programming language.">
-  <title>nextEnclst method - Enclst class - enclst library - Dart API</title>
+  <meta name="description" content="API docs for the nextPath method from the GeneratingFile class, for the Dart programming language.">
+  <title>nextPath method - GeneratingFile class - generating_file library - Dart API</title>
 
 
   
@@ -29,11 +29,11 @@
   <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">enclst_core_dart</a></li>
-    <li><a href="../../enclst/enclst-library.html">enclst.dart</a></li>
-    <li><a href="../../enclst/Enclst-class.html">Enclst</a></li>
-    <li class="self-crumb">nextEnclst method</li>
+    <li><a href="../../generating_file/generating_file-library.html">generating_file.dart</a></li>
+    <li><a href="../../generating_file/GeneratingFile-class.html">GeneratingFile</a></li>
+    <li class="self-crumb">nextPath method</li>
   </ol>
-  <div class="self-name">nextEnclst</div>
+  <div class="self-name">nextPath</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -54,18 +54,18 @@
 <div
     id="dartdoc-main-content"
     class="main-content"
-    data-above-sidebar="enclst&#47;Enclst-class-sidebar.html"
+    data-above-sidebar="generating_file&#47;GeneratingFile-class-sidebar.html"
     data-below-sidebar="">
     <div>
-<h1><span class="kind-method">nextEnclst</span> method 
+<h1><span class="kind-method">nextPath</span> method 
 </h1></div>
 
     <section class="multi-line-signature">
       
 
 <span class="returntype">dynamic</span>
-<span class="name ">nextEnclst</span>(<wbr><ol class="parameter-list"> <li><span class="parameter" id="nextEnclst-param-path"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span>, {</span></li>
-<li><span class="parameter" id="nextEnclst-param-v_root"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">v_root</span> = <span class="default-value">&quot;&quot;</span>, </span></li>
+<span class="name ">nextPath</span>(<wbr><ol class="parameter-list"> <li><span class="parameter" id="nextPath-param-path"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span>, {</span></li>
+<li><span class="parameter" id="nextPath-param-v_root"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">v_root</span> = <span class="default-value">&quot;&quot;</span>, </span></li>
 </ol>})
 
       
@@ -77,9 +77,28 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">nextEnclst(String path, {String v_root = &quot;&quot;}) async {
-  var next = g_file?.nextPath(path, v_root: v_root);
-  return await createFromURL(next);
+  <pre class="language-dart"><code class="language-dart">nextPath(String path, {String v_root = &quot;&quot;}) {
+  if (isURL(path)) {
+    &#47;&#47; path is full url
+    return path;
+  } else if (path[0] == &quot;&#47;&quot;) {
+    &#47;&#47; URL - filename
+    String origin = (Uri.parse(ganeratingFilePath)).origin;
+    &#47;&#47; path is full path
+    if (v_root != &quot;&quot;) {
+      if (v_root[v_root.length - 1] == &#39;&#47;&#39;) {
+        &#47;&#47; remove trailing &#39;&#47;&#39;
+        v_root = v_root.substring(0, v_root.length - 1);
+      }
+      origin = v_root;
+    }
+    return origin + path;
+  } else {
+    &#47;&#47; path is relative path
+    var context = p.Context(style: p.Style.url);
+    return (context
+        .canonicalize(context.join(ganeratingFilePath, &quot;..&quot;, path)));
+  }
 }</code></pre>
 </section>
 
@@ -96,13 +115,13 @@
 
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
     <li><a href="../../index.html">enclst_core_dart</a></li>
-    <li><a href="../../enclst/enclst-library.html">enclst</a></li>
-    <li><a href="../../enclst/Enclst-class.html">Enclst</a></li>
-    <li class="self-crumb">nextEnclst method</li>
+    <li><a href="../../generating_file/generating_file-library.html">generating_file</a></li>
+    <li><a href="../../generating_file/GeneratingFile-class.html">GeneratingFile</a></li>
+    <li class="self-crumb">nextPath method</li>
 </ol>
 
 
-    <h5>Enclst class</h5>
+    <h5>GeneratingFile class</h5>
     <div id="dartdoc-sidebar-left-content"></div>
   </div><!--/.sidebar-offcanvas-->
 
