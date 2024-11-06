@@ -48,7 +48,7 @@ class Enclst with ValueChecker {
   /**
    * Calculate subsequent URL from the Current URL and Next path
 
-  * @param {string} currentURL Current URL 
+   * @param {string} currentURL Current URL 
    * @param {string} path Next path
    * @param {string} base_url Base url of this path, or nil.
    * @returns {string} created URL as follows:
