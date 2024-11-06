@@ -46,22 +46,21 @@ class Enclst with ValueChecker {
   }
 
   /**
-   * Calculate subsequent URL from the Current URL and Next path
+   Calculate subsequent URL from the Current URL and Next path
 
-   * @param {string} currentURL Current URL 
-   * @param {string} path Next path
-   * @param {string} base_url Base url of this path, or nil.
-   * @returns {string} created URL as follows:
-   * <ul>
-   *   <li> if path is started from "http://", just return paht</li>
-   *   <li> else if path is started from "/"
-   *   <ul>
-   *     <li> if base_url is not specified, return CurrentURL + path
-   *     <li> if base_url is specified, return base_url + path
-   *   </ul>
-   *   <li> else, return URL(path, currentURL)
-   * </ul>
-   * 
+   @param {string} currentURL Current URL.<br>
+   @param {string} path Next path
+   @param {string} base_url Base url of this path, or nil.
+   @returns {string} created URL as follows:
+   <ul>
+     <li> if path is started from "http://", just return paht</li>
+     <li> else if path is started from "/"
+     <ul>
+       <li> if base_url is not specified, return CurrentURL + path
+       <li> if base_url is specified, return base_url + path
+     </ul>
+     <li> else, return URL(path, currentURL)
+   </ul>
    */
   nextURL(String path, {String base_url = ""}) {
     if (isURL(path)) {
