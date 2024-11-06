@@ -8,6 +8,7 @@ class Enclst with ValueChecker {
   String url = "";
   List<Item> items = [];
 
+  // Constructor
   Enclst(String enclstStr) {
     final re = RegExp(r'\r\n|\n');
     List<String> lines = enclstStr.split(re);
@@ -34,6 +35,7 @@ class Enclst with ValueChecker {
     }
   }
 
+  // Static creator
   static Future<Enclst> createFromURL(String urlStr) async {
     var uri = Uri.parse(urlStr);
     var response = await http.get(uri);
@@ -61,7 +63,7 @@ class Enclst with ValueChecker {
    * </ul>
    * 
    */
-  nextURL(String path, String base_url) {
+  nextURL(String path, {String base_url = ""}) {
     if (isURL(path)) {
       // path is full url
       return path;
@@ -82,8 +84,8 @@ class Enclst with ValueChecker {
     }
   }
 
-  nextEnclst(String path, String base_url) async {
-    var next = nextURL(path, base_url);
+  nextEnclst(String path, {String base_url = ""}) async {
+    var next = nextURL(path, base_url: base_url);
     return await createFromURL(next);
   }
 }
