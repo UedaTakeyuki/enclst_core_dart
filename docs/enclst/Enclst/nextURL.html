@@ -73,10 +73,12 @@
     </section>
     
 <section class="desc markdown">
-  <p>Calculate subsequent URL from the Current URL and Next path</p>
+  <p>Calculate subsequent URL from the current URL that storeed in the member valuable of this enclst, and a parameter path that indicate a next enclst which is loading.
+Retuned nextURL is calculated as joind of the current url and path.
+You can optionally specify a base_url, which will be used instead of the current url.</p>
 <p>@param {string} currentURL Current URL.<br>
-@param {string} path Next path
-@param {string} base_url Base url of this path, or nil.
+@param {string} path Next path.&lt;br?
+@param {string} base_url Base url of this path, or nil.<br>
 @returns {string} created URL as follows:</p>
 <ul>
 <li> if path is started from "http://", just return paht</li>
@@ -94,25 +96,25 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">nextURL(String path, {String base_url = &quot;&quot;}) {
-  if (isURL(path)) {
-    &#47;&#47; path is full url
-    return path;
-  } else if (path[0] == &quot;&#47;&quot;) {
-    &#47;&#47; path is full path
-    if (base_url == &quot;&quot;) {
-      base_url = (Uri.parse(url)).origin;
+    if (isURL(path)) {
+      &#47;&#47; path is full url
+      return path;
+    } else if (path[0] == &quot;&#47;&quot;) {
+      &#47;&#47; path is full path
+      if (base_url == &quot;&quot;) {
+        base_url = (Uri.parse(url)).origin;
+      }
+      if (base_url[base_url.length - 1] == &#39;&#47;&#39;) {
+        &#47;&#47; remove trailing &#39;&#47;&#39;
+        base_url = base_url.substring(0, base_url.length - 1);
+      }
+      return base_url + path;
+    } else {
+      &#47;&#47; path is relative path
+      var context = p.Context(style: p.Style.url);
+      return (context.canonicalize(context.join(url, &quot;..&quot;, path)));
     }
-    if (base_url[base_url.length - 1] == &#39;&#47;&#39;) {
-      &#47;&#47; remove trailing &#39;&#47;&#39;
-      base_url = base_url.substring(0, base_url.length - 1);
-    }
-    return base_url + path;
-  } else {
-    &#47;&#47; path is relative path
-    var context = p.Context(style: p.Style.url);
-    return (context.canonicalize(context.join(url, &quot;..&quot;, path)));
-  }
-}</code></pre>
+  }</code></pre>
 </section>
 
 
