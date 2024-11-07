@@ -9,22 +9,22 @@ mixin FilePath on ValueChecker {
 
   Depending on what the parameter ```path``` is like, evaluate it as following:
 
-  ## full url
+  ## Full URL
   Calculate subsequent URL from the current URL that storeed in the member valuable of this enclst, and a parameter path that indicate a next enclst which is loading.
   Retuned nextURL is calculated as joind of the current url and path.
   You can optionally specify a base_url, which will be used instead of the current url.
 
-  ### absolute path
+  ## Absolute Path
   Calculate subsequent URL from the current URL that storeed in the member valuable of this enclst, and a parameter path that indicate a next enclst which is loading.
   Retuned nextURL is calculated as joind of the current url and path.
   You can optionally specify a base_url, which will be used instead of the current url.
 
-  #### absolute path with aditional virtual path 
+  ## Absolute Path with adding Virtual Path 
   Calculate subsequent URL from the current URL that storeed in the member valuable of this enclst, and a parameter path that indicate a next enclst which is loading.
   Retuned nextURL is calculated as joind of the current url and path.
   You can optionally specify a base_url, which will be used instead of the current url.
 
-  ##### relative path 
+  ## Relative Path 
   Calculate subsequent URL from the current URL that storeed in the member valuable of this enclst, and a parameter path that indicate a next enclst which is loading.
   Retuned nextURL is calculated as joind of the current url and path.
   You can optionally specify a base_url, which will be used instead of the current url.
