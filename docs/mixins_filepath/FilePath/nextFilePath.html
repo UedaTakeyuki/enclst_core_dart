@@ -73,7 +73,18 @@
     </section>
     
 <section class="desc markdown">
-  <p>Calculate subsequent URL from the current URL that storeed in the member valuable of this enclst, and a parameter path that indicate a next enclst which is loading.
+  <p>Calculate the path of the next Encrust file.</p>
+<p>Depending on what the path given in the parameter is, calculate it as follows:</p>
+<h1 id="full-url">Full URL</h1>
+<p>Calculate subsequent URL from the current URL that storeed in the member valuable of this enclst, and a parameter path that indicate a next enclst which is loading.
+Retuned nextURL is calculated as joind of the current url and path.
+You can optionally specify a base_url, which will be used instead of the current url.</p>
+<h1 id="full-url-2">Full URL</h1>
+<p>Calculate subsequent URL from the current URL that storeed in the member valuable of this enclst, and a parameter path that indicate a next enclst which is loading.
+Retuned nextURL is calculated as joind of the current url and path.
+You can optionally specify a base_url, which will be used instead of the current url.</p>
+<h1 id="full-url-3">Full URL</h1>
+<p>Calculate subsequent URL from the current URL that storeed in the member valuable of this enclst, and a parameter path that indicate a next enclst which is loading.
 Retuned nextURL is calculated as joind of the current url and path.
 You can optionally specify a base_url, which will be used instead of the current url.</p>
 <p>@param {string} currentURL Current URL.<br>
@@ -96,24 +107,34 @@ You can optionally specify a base_url, which will be used instead of the current
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">nextFilePath(String path, {String v_root = &quot;&quot;}) {
+    &#47;&#47; path is full url, use it as is.
     if (isURL(path)) {
-      &#47;&#47; path is full url
       return path;
+
+      &#47;&#47; path is absolute
     } else if (path[0] == &quot;&#47;&quot;) {
-      &#47;&#47; URL - filename
+      &#47;&#47; Get origin (protocol:port&#47;&#47;server name) from current file path.
       String origin = (Uri.parse(filepath ?? &quot;&quot;)).origin;
-      &#47;&#47; path is full path
+
+      &#47;&#47; The virtual root is specified.
       if (v_root != &quot;&quot;) {
+        &#47;&#47; if it end with `&#47;`
         if (v_root[v_root.length - 1] == &#39;&#47;&#39;) {
           &#47;&#47; remove trailing &#39;&#47;&#39;
           v_root = v_root.substring(0, v_root.length - 1);
         }
+        &#47;&#47; Set specified virtual root as origin
         origin = v_root;
       }
+
+      &#47;&#47; note: THe path string is start with `&#47;`.
       return origin + path;
+
+      &#47;&#47; path is relative
     } else {
-      &#47;&#47; path is relative path
+      &#47;&#47; set path context for url
       var context = p.Context(style: p.Style.url);
+      &#47;&#47; join current parent path (..) and filepath
       return (context.canonicalize(context.join(filepath ?? &quot;&quot;, &quot;..&quot;, path)));
     }
   }</code></pre>

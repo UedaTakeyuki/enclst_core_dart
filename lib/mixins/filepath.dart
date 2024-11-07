@@ -5,6 +5,21 @@ mixin FilePath on ValueChecker {
   String? filepath;
 
 /**
+  Calculate the path of the next Encrust file.
+
+  Depending on what the path given in the parameter is, calculate it as follows:
+
+  # Full URL
+  Calculate subsequent URL from the current URL that storeed in the member valuable of this enclst, and a parameter path that indicate a next enclst which is loading.
+  Retuned nextURL is calculated as joind of the current url and path.
+  You can optionally specify a base_url, which will be used instead of the current url.
+
+  # Full URL
+  Calculate subsequent URL from the current URL that storeed in the member valuable of this enclst, and a parameter path that indicate a next enclst which is loading.
+  Retuned nextURL is calculated as joind of the current url and path.
+  You can optionally specify a base_url, which will be used instead of the current url.
+
+  # Full URL
   Calculate subsequent URL from the current URL that storeed in the member valuable of this enclst, and a parameter path that indicate a next enclst which is loading.
   Retuned nextURL is calculated as joind of the current url and path.
   You can optionally specify a base_url, which will be used instead of the current url.
@@ -24,24 +39,34 @@ mixin FilePath on ValueChecker {
   </ul>
 */
   nextFilePath(String path, {String v_root = ""}) {
+    // path is full url, use it as is.
     if (isURL(path)) {
-      // path is full url
       return path;
+
+      // path is absolute
     } else if (path[0] == "/") {
-      // URL - filename
+      // Get origin (protocol:port//server name) from current file path.
       String origin = (Uri.parse(filepath ?? "")).origin;
-      // path is full path
+
+      // The virtual root is specified.
       if (v_root != "") {
+        // if it end with `/`
         if (v_root[v_root.length - 1] == '/') {
           // remove trailing '/'
           v_root = v_root.substring(0, v_root.length - 1);
         }
+        // Set specified virtual root as origin
         origin = v_root;
       }
+
+      // note: THe path string is start with `/`.
       return origin + path;
+
+      // path is relative
     } else {
-      // path is relative path
+      // set path context for url
       var context = p.Context(style: p.Style.url);
+      // join current parent path (..) and filepath
       return (context.canonicalize(context.join(filepath ?? "", "..", path)));
     }
   }
