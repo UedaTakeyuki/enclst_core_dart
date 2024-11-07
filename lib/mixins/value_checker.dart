@@ -1,5 +1,9 @@
 import 'package:flutter/foundation.dart';
 
+/// Infer what a string represents
+///
+/// This mixin has a group of functions which infer
+/// what a parameter string represents.
 mixin ValueChecker {
   /// Is this URL?
   bool isURL(String s) {
