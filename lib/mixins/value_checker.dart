@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 mixin ValueChecker {
-  // is this URL?
+  /// Is this URL?
   bool isURL(String s) {
     if (s.substring(0, 6) == "http://" ||
         s.substring(0, 7) == "https://" ||
@@ -12,7 +12,7 @@ mixin ValueChecker {
     }
   }
 
-  // is this Path?
+  /// Is this Path?
   bool isPath(String s) {
     if (isURL(s)) {
       return true;
@@ -25,7 +25,7 @@ mixin ValueChecker {
     }
   }
 
-  // is this Enclst?
+  /// Is this string for Enclst file name?
   bool isEnclst(String s) {
     if (s.endsWith('.enclst')) {
       return true;
@@ -34,7 +34,7 @@ mixin ValueChecker {
     }
   }
 
-  // is this youtube contents ID?
+  /// Is this youtube contents ID?
   bool isYTcontentID(String s) {
     if (isPath(s) || isEnclst(s)) {
       return false;
@@ -47,7 +47,7 @@ mixin ValueChecker {
     }
   }
 
-  // is this youtube playlist ID?
+  /// Is this youtube playlist ID?
   bool isYTplaylistID(String s) {
     if (isPath(s) || isEnclst(s)) {
       return false;
