@@ -5,21 +5,26 @@ mixin FilePath on ValueChecker {
   String? filepath;
 
 /**
-  Calculate the path of the next Encrust file.
+  Calculate the file path of the next Encrust file.
 
-  Depending on what the path given in the parameter is, calculate it as follows:
+  Depending on what the parameter ```path``` is like, evaluate it as following:
 
-  # Full URL
+  ## full url
   Calculate subsequent URL from the current URL that storeed in the member valuable of this enclst, and a parameter path that indicate a next enclst which is loading.
   Retuned nextURL is calculated as joind of the current url and path.
   You can optionally specify a base_url, which will be used instead of the current url.
 
-  # Full URL
+  ### absolute path
   Calculate subsequent URL from the current URL that storeed in the member valuable of this enclst, and a parameter path that indicate a next enclst which is loading.
   Retuned nextURL is calculated as joind of the current url and path.
   You can optionally specify a base_url, which will be used instead of the current url.
 
-  # Full URL
+  #### absolute path with aditional virtual path 
+  Calculate subsequent URL from the current URL that storeed in the member valuable of this enclst, and a parameter path that indicate a next enclst which is loading.
+  Retuned nextURL is calculated as joind of the current url and path.
+  You can optionally specify a base_url, which will be used instead of the current url.
+
+  ##### relative path 
   Calculate subsequent URL from the current URL that storeed in the member valuable of this enclst, and a parameter path that indicate a next enclst which is loading.
   Retuned nextURL is calculated as joind of the current url and path.
   You can optionally specify a base_url, which will be used instead of the current url.
