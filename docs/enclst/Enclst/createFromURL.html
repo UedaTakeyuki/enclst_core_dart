@@ -81,7 +81,6 @@
   var response = await http.get(uri);
   var enclistStr = response.body;
   final enclst = Enclst(enclistStr);
-&#47;&#47;    enclst.g_file = GeneratingFile(urlStr);
   enclst.filepath = urlStr;
   return enclst;
 }</code></pre>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the nextFilePath method from the FilePath mixin, for the Dart programming language.">
+  <title>nextFilePath method - FilePath mixin - filepath library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">enclst_core_dart</a></li>
+    <li><a href="../../mixins_filepath/mixins_filepath-library.html">mixins&#47;filepath.dart</a></li>
+    <li><a href="../../mixins_filepath/FilePath-mixin.html">FilePath</a></li>
+    <li class="self-crumb">nextFilePath method</li>
+  </ol>
+  <div class="self-name">nextFilePath</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button" title="Toggle brightness">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        dark_mode
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        light_mode
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="mixins_filepath&#47;FilePath-mixin-sidebar.html"
+    data-below-sidebar="">
+    <div>
+<h1><span class="kind-method">nextFilePath</span> method 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+
+<span class="returntype">dynamic</span>
+<span class="name ">nextFilePath</span>(<wbr><ol class="parameter-list"> <li><span class="parameter" id="nextFilePath-param-path"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span>, {</span></li>
+<li><span class="parameter" id="nextFilePath-param-v_root"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">v_root</span> = <span class="default-value">&quot;&quot;</span>, </span></li>
+</ol>})
+
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Calculate subsequent URL from the current URL that storeed in the member valuable of this enclst, and a parameter path that indicate a next enclst which is loading.
+Retuned nextURL is calculated as joind of the current url and path.
+You can optionally specify a base_url, which will be used instead of the current url.</p>
+<p>@param {string} currentURL Current URL.<br>
+@param {string} path Next path.<br>
+@param {string} base_url Base url of this path, or nil.<br>
+@returns {string} created URL as follows:</p>
+<ul>
+<li> if path is started from "http://", just return paht</li>
+<li> else if path is started from "/"
+<ul>
+<li> if base_url is not specified, return CurrentURL + path
+</li><li> if base_url is specified, return base_url + path
+</li></ul>
+</li><li> else, return URL(path, currentURL)
+</li></ul>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">nextFilePath(String path, {String v_root = &quot;&quot;}) {
+    if (isURL(path)) {
+      &#47;&#47; path is full url
+      return path;
+    } else if (path[0] == &quot;&#47;&quot;) {
+      &#47;&#47; URL - filename
+      String origin = (Uri.parse(filepath ?? &quot;&quot;)).origin;
+      &#47;&#47; path is full path
+      if (v_root != &quot;&quot;) {
+        if (v_root[v_root.length - 1] == &#39;&#47;&#39;) {
+          &#47;&#47; remove trailing &#39;&#47;&#39;
+          v_root = v_root.substring(0, v_root.length - 1);
+        }
+        origin = v_root;
+      }
+      return origin + path;
+    } else {
+      &#47;&#47; path is relative path
+      var context = p.Context(style: p.Style.url);
+      return (context.canonicalize(context.join(filepath ?? &quot;&quot;, &quot;..&quot;, path)));
+    }
+  }</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../../index.html">enclst_core_dart</a></li>
+    <li><a href="../../mixins_filepath/mixins_filepath-library.html">filepath</a></li>
+    <li><a href="../../mixins_filepath/FilePath-mixin.html">FilePath</a></li>
+    <li class="self-crumb">nextFilePath method</li>
+</ol>
+
+
+    <h5>FilePath mixin</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+</div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    enclst_core_dart
+      0.0.1
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+
