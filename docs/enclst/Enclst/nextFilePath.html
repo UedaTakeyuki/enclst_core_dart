@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the nextEnclst method from the Enclst class, for the Dart programming language.">
-  <title>nextEnclst method - Enclst class - enclst library - Dart API</title>
+  <meta name="description" content="API docs for the nextFilePath method from the Enclst class, for the Dart programming language.">
+  <title>nextFilePath method - Enclst class - enclst library - Dart API</title>
 
 
   
@@ -31,9 +31,9 @@
     <li><a href="../../index.html">enclst_core_dart</a></li>
     <li><a href="../../enclst/enclst-library.html">enclst.dart</a></li>
     <li><a href="../../enclst/Enclst-class.html">Enclst</a></li>
-    <li class="self-crumb">nextEnclst method</li>
+    <li class="self-crumb">nextFilePath method</li>
   </ol>
-  <div class="self-name">nextEnclst</div>
+  <div class="self-name">nextFilePath</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -57,30 +57,65 @@
     data-above-sidebar="enclst&#47;Enclst-class-sidebar.html"
     data-below-sidebar="">
     <div>
-<h1><span class="kind-method">nextEnclst</span> method 
+<h1><span class="kind-method">nextFilePath</span> method 
 </h1></div>
 
     <section class="multi-line-signature">
       
 
 <span class="returntype">dynamic</span>
-<span class="name ">nextEnclst</span>(<wbr><ol class="parameter-list"> <li><span class="parameter" id="nextEnclst-param-path"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span>, {</span></li>
-<li><span class="parameter" id="nextEnclst-param-v_root"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">v_root</span> = <span class="default-value">&quot;&quot;</span>, </span></li>
+<span class="name ">nextFilePath</span>(<wbr><ol class="parameter-list"> <li><span class="parameter" id="nextFilePath-param-path"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span>, {</span></li>
+<li><span class="parameter" id="nextFilePath-param-v_root"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">v_root</span> = <span class="default-value">&quot;&quot;</span>, </span></li>
 </ol>})
 
       
 
     </section>
     
+<section class="desc markdown">
+  <p>Calculate subsequent URL from the current URL that storeed in the member valuable of this enclst, and a parameter path that indicate a next enclst which is loading.
+Retuned nextURL is calculated as joind of the current url and path.
+You can optionally specify a base_url, which will be used instead of the current url.</p>
+<p>@param {string} currentURL Current URL.<br>
+@param {string} path Next path.<br>
+@param {string} base_url Base url of this path, or nil.<br>
+@returns {string} created URL as follows:</p>
+<ul>
+<li> if path is started from "http://", just return paht</li>
+<li> else if path is started from "/"
+<ul>
+<li> if base_url is not specified, return CurrentURL + path
+</li><li> if base_url is specified, return base_url + path
+</li></ul>
+</li><li> else, return URL(path, currentURL)
+</li></ul>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">nextEnclst(String path, {String v_root = &quot;&quot;}) async {
-&#47;&#47;    var next = g_file?.nextPath(path, v_root: v_root);
-  final nextfilepath = nextFilePath(path, v_root: v_root);
-  return await createFromURL(nextfilepath);
+  <pre class="language-dart"><code class="language-dart">nextFilePath(String path, {String v_root = &quot;&quot;}) {
+  if (isURL(path)) {
+    &#47;&#47; path is full url
+    return path;
+  } else if (path[0] == &quot;&#47;&quot;) {
+    &#47;&#47; URL - filename
+    String origin = (Uri.parse(filepath ?? &quot;&quot;)).origin;
+    &#47;&#47; path is full path
+    if (v_root != &quot;&quot;) {
+      if (v_root[v_root.length - 1] == &#39;&#47;&#39;) {
+        &#47;&#47; remove trailing &#39;&#47;&#39;
+        v_root = v_root.substring(0, v_root.length - 1);
+      }
+      origin = v_root;
+    }
+    return origin + path;
+  } else {
+    &#47;&#47; path is relative path
+    var context = p.Context(style: p.Style.url);
+    return (context.canonicalize(context.join(filepath ?? &quot;&quot;, &quot;..&quot;, path)));
+  }
 }</code></pre>
 </section>
 
@@ -99,7 +134,7 @@
     <li><a href="../../index.html">enclst_core_dart</a></li>
     <li><a href="../../enclst/enclst-library.html">enclst</a></li>
     <li><a href="../../enclst/Enclst-class.html">Enclst</a></li>
-    <li class="self-crumb">nextEnclst method</li>
+    <li class="self-crumb">nextFilePath method</li>
 </ol>
 
 
