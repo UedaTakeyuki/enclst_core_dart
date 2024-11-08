@@ -7,9 +7,9 @@ class Item {
   /** 
   Create Item by line string
 
-  A line string consist of value part and title part separated by separator ***|**.
-  A value string is prohibited to contain character ***|***, instead titile string can have.
-  So, only the first ***|*** in line string is the separator and other ***|***s are only a part of title string. 
+  A line string consist of value part and title part separated by separator "|".
+  A value string is prohibited to contain character "|", instead titile string can have.
+  So, only the first "|" in line string is the separator and other "|"s are only a part of title string. 
  */
   Item.byStr(String line) {
     if ("" == line) {
