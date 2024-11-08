@@ -7,7 +7,9 @@ mixin FilePath on ValueChecker {
 /**
   Calculate the file path of the next Encrust file.
 
-  Depending on what the parameter ```path``` is like, evaluate it as following:
+  # Return Value
+  Return the ```URL``` string to get the Enclst file indicated by the parameter ```path```. 
+  Depending on what the parameter ```path``` is like, it is evaluated as following:
 
   ## Full URL
   In the case of the path is the full version of the URL string like a "https:www.a.com/b.enlist"
