@@ -63,8 +63,7 @@ For general information about developing packages, see the Dart guide for
 and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/to/develop-packages).
 -->
-<p>TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.</p>
+<p><a href="https://github.com/UedaTakeyuki/EncLst">Enclst</a> library for Dart.</p>
 <h2 id="features">Features</h2>
 <p>TODO: List what your package can do. Maybe include images, gifs, or videos.</p>
 <h2 id="getting-started">Getting started</h2>
@@ -80,6 +79,10 @@ know whether this package might be useful for them.</p>
 <h2 id="usage">Usage</h2>
 <p>Import this package as follow:</p>
 <pre class="language-dart"><code>import 'package:enclst_core_dart/enclst_core_dart.dart';
+</code></pre>
+<p>Create from Enclst file:</p>
+<pre class="language-dart"><code>final enclst = await Enclst.createFromURL(
+        'https://raw.githubusercontent.com/UedaTakeyuki/EncLst/refs/heads/main/examples/EncycloList/lang/fr/journal/journal.enclst');
 </code></pre>
 <pre class="language-dart"><code class="language-dart">const like = 'sample';
 </code></pre>

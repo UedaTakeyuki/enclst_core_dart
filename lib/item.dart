@@ -4,7 +4,7 @@ class Item {
   String title = "";
   Value value = Value("");
 
-  Item(String line) {
+  Item.byStr(String line) {
     if ("" == line) {
       value = Value("");
     } else {

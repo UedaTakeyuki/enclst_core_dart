@@ -32,7 +32,7 @@ class Enclst with ValueChecker, FilePath {
     while (lines.isNotEmpty) {
       var line = lines[0];
       if (line != "") {
-        items.add(Item(lines[0]));
+        items.add(Item.byStr(lines[0]));
       }
       lines.removeAt(0);
     }

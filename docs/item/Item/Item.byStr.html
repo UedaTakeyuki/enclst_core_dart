@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the Enclst constructor from Class Enclst from the enclst library, for the Dart programming language.">
-  <title>Enclst constructor - Enclst - enclst library - Dart API</title>
+  <meta name="description" content="API docs for the Item.byStr constructor from Class Item from the item library, for the Dart programming language.">
+  <title>Item.byStr constructor - Item - item library - Dart API</title>
 
 
   
@@ -29,11 +29,11 @@
   <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">enclst_core_dart</a></li>
-    <li><a href="../../enclst/enclst-library.html">enclst.dart</a></li>
-    <li><a href="../../enclst/Enclst-class.html">Enclst</a></li>
-    <li class="self-crumb">Enclst constructor</li>
+    <li><a href="../../item/item-library.html">item.dart</a></li>
+    <li><a href="../../item/Item-class.html">Item</a></li>
+    <li class="self-crumb">Item.byStr constructor</li>
   </ol>
-  <div class="self-name">Enclst</div>
+  <div class="self-name">Item.byStr</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -54,15 +54,15 @@
   <div
       id="dartdoc-main-content"
       class="main-content"
-      data-above-sidebar="enclst&#47;Enclst-class-sidebar.html"
+      data-above-sidebar="item&#47;Item-class-sidebar.html"
       data-below-sidebar="">
       <div>
-<h1><span class="kind-constructor">Enclst</span> constructor 
+<h1><span class="kind-constructor">Item.byStr</span> constructor 
 </h1></div>
 
     <section class="multi-line-signature">
       
-      <span class="name ">Enclst</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="-param-enclstStr"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">enclstStr</span></span></li>
+      <span class="name ">Item.byStr</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="byStr-param-line"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">line</span></span></li>
 </ol>)
     </section>
 
@@ -72,28 +72,26 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Enclst(String enclstStr) {
-  final re = RegExp(r&#39;\r\n|\n&#39;);
-  List&lt;String&gt; lines = enclstStr.split(re);
-  title = lines[0];
-
-  &#47;&#47; find a blank line
-  while (lines.isNotEmpty) {
-    if (lines[0] == &quot;&quot;) {
-      &#47;&#47; remove blank line
-      lines.removeAt(0);
-      break;
+  <pre class="language-dart"><code class="language-dart">Item.byStr(String line) {
+  if (&quot;&quot; == line) {
+    value = Value(&quot;&quot;);
+  } else {
+    List&lt;String&gt; separatedLine = line.split(&#39;|&#39;);
+    switch (separatedLine.length) {
+      case 1:
+        value = Value(separatedLine[0].trim());
+        title = &quot;&quot;;
+        break;
+      case 2:
+        value = Value(separatedLine[0].trim());
+        title = separatedLine[1].trim();
+        break;
+      default:
+        value = Value(separatedLine[0].trim());
+        separatedLine.removeAt(0);
+        title = separatedLine.join(&#39;|&#39;).trim();
+        break;
     }
-    lines.removeAt(0);
-  }
-
-  &#47;&#47; make items
-  while (lines.isNotEmpty) {
-    var line = lines[0];
-    if (line != &quot;&quot;) {
-      items.add(Item.byStr(lines[0]));
-    }
-    lines.removeAt(0);
   }
 }</code></pre>
 </section>
@@ -111,13 +109,13 @@
 
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
     <li><a href="../../index.html">enclst_core_dart</a></li>
-    <li><a href="../../enclst/enclst-library.html">enclst</a></li>
-    <li><a href="../../enclst/Enclst-class.html">Enclst</a></li>
-    <li class="self-crumb">Enclst constructor</li>
+    <li><a href="../../item/item-library.html">item</a></li>
+    <li><a href="../../item/Item-class.html">Item</a></li>
+    <li class="self-crumb">Item.byStr constructor</li>
 </ol>
 
 
-    <h5>Enclst class</h5>
+    <h5>Item class</h5>
     <div id="dartdoc-sidebar-left-content"></div>
   </div><!--/.sidebar-offcanvas-left-->
 
