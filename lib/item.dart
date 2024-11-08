@@ -4,7 +4,19 @@ class Item {
   String title = "";
   Value value = Value("");
 
-  /// create Item by line string
+  /** 
+  Create Item by line string
+
+  A line string consist of value part and title part separated by separator '|'.
+  A value string is prohibited to contain character "|", instead titile string can have.
+  So, in case:
+
+  ## separater "|" not exist
+  All string should be value.
+
+  ## separater "|" exist
+  Strings before first "|" should be value and all of remains characters (include several "|"s) are for title.
+ */
   Item.byStr(String line) {
     if ("" == line) {
       value = Value("");
