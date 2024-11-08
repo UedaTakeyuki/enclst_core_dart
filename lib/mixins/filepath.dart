@@ -34,7 +34,7 @@ mixin FilePath on ValueChecker {
   You can optionally specify a base_url, which will be used instead of the current url.
 
 */
-  nextFilePath(String path, {String v_root = ""}) {
+  String nextFilePath(String path, {String v_root = ""}) {
     // path is full url, use it as is.
     if (isURL(path)) {
       return path;
