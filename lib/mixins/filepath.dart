@@ -10,16 +10,20 @@ mixin FilePath on ValueChecker {
   Depending on what the parameter ```path``` is like, evaluate it as following:
 
   ## Full URL
-  Calculate subsequent URL from the current URL that storeed in the member valuable of this enclst, and a parameter path that indicate a next enclst which is loading.
-  Retuned nextURL is calculated as joind of the current url and path.
-  You can optionally specify a base_url, which will be used instead of the current url.
-
+  In the case of the path is the full version of the URL string like a "https:www.a.com/b.enlist"
+  which can be used as the parameter of the HTTP Get for fetching a new enclist file,
+  this function returns the same string of the input parameter path as is. 
+  
   ## Absolute Path
+  In the case of the path is the absolute path string start with "/" like a "/b.enlist",
+  return value is depend on the presence of an additional named parameter "v_root" indicating a virtual root. 
+
+  ### without v-root
   Calculate subsequent URL from the current URL that storeed in the member valuable of this enclst, and a parameter path that indicate a next enclst which is loading.
   Retuned nextURL is calculated as joind of the current url and path.
   You can optionally specify a base_url, which will be used instead of the current url.
 
-  ## Absolute Path with adding Virtual Path 
+  ### with v-root 
   Calculate subsequent URL from the current URL that storeed in the member valuable of this enclst, and a parameter path that indicate a next enclst which is loading.
   Retuned nextURL is calculated as joind of the current url and path.
   You can optionally specify a base_url, which will be used instead of the current url.
@@ -29,19 +33,6 @@ mixin FilePath on ValueChecker {
   Retuned nextURL is calculated as joind of the current url and path.
   You can optionally specify a base_url, which will be used instead of the current url.
 
-  @param {string} currentURL Current URL.<br>
-  @param {string} path Next path.<br>
-  @param {string} base_url Base url of this path, or nil.<br>
-  @returns {string} created URL as follows:
-  <ul>
-    <li> if path is started from "http://", just return paht</li>
-    <li> else if path is started from "/"
-    <ul>
-      <li> if base_url is not specified, return CurrentURL + path
-      <li> if base_url is specified, return base_url + path
-    </ul>
-    <li> else, return URL(path, currentURL)
-  </ul>
 */
   nextFilePath(String path, {String v_root = ""}) {
     // path is full url, use it as is.
