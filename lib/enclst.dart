@@ -5,6 +5,9 @@ import 'package:enclst_core_dart/item.dart';
 import 'package:enclst_core_dart/mixins/value_checker.dart';
 import 'package:enclst_core_dart/mixins/filepath.dart';
 
+/**
+ An object representation of the [Enclst Notation](https://github.com/UedaTakeyuki/EncLst/tree/main?tab=readme-ov-file#enclst-notation) for ***Dart***.
+ */
 class Enclst with ValueChecker, FilePath {
   String title = "";
   String url = "";

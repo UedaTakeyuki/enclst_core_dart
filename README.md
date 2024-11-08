@@ -19,14 +19,27 @@ know whether this package might be useful for them.
 TODO: List what your package can do. Maybe include images, gifs, or videos.
 
 ## Getting started
+Install this package as follow:
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+```
+flutter pub add 'enclist_core_dart:{"git":{"url":"https://github.com/UedaTakeyuki/enclst_core_dart","ref":"main"}}'
+```
 
+or add following lines on your ```pubspec.yaml```
+
+```
+  enclst_core_dart:
+    git:
+      url: https://github.com/UedaTakeyuki/enclst_core_dart.git
+      ref: main
+```
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+Import this package as follow:
+```
+import 'package:enclst_core_dart/enclst_core_dart.dart';
+```
+
 
 ```dart
 const like = 'sample';
