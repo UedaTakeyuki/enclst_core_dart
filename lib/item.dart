@@ -4,6 +4,7 @@ class Item {
   String title = "";
   Value value = Value("");
 
+  /// create Item by line string
   Item.byStr(String line) {
     if ("" == line) {
       value = Value("");
@@ -27,5 +28,6 @@ class Item {
     }
   }
 
+  /// Default empty constructor.
   Item() {}
 }
