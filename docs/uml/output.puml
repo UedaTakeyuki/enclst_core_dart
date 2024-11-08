@@ -1,0 +1,20 @@
+@startuml
+class Enclst {
+---
+title: String
+items: List<Item>
+createFromURL(): Enclst
+nextEnclst(): void
+}
+class Item {
+---
+title: String
+value: Value
+}
+Item ..> Value
+class Value {
+---
+positionalValues: List<String>
+namedValues: Map<String, String>
+}
+@enduml
