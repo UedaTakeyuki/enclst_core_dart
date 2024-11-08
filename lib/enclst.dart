@@ -10,7 +10,6 @@ import 'package:enclst_core_dart/mixins/filepath.dart';
  */
 class Enclst with ValueChecker, FilePath {
   String title = "";
-  String url = "";
   List<Item> items = [];
 
   // Constructor

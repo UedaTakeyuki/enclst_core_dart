@@ -11,8 +11,7 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/to/develop-packages).
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+[Enclst](https://github.com/UedaTakeyuki/EncLst) library for Dart.
 
 ## Features
 
@@ -40,6 +39,11 @@ Import this package as follow:
 import 'package:enclst_core_dart/enclst_core_dart.dart';
 ```
 
+Create from Enclst file:
+```
+final enclst = await Enclst.createFromURL(
+        'https://raw.githubusercontent.com/UedaTakeyuki/EncLst/refs/heads/main/examples/EncycloList/lang/fr/journal/journal.enclst');
+```
 
 ```dart
 const like = 'sample';
