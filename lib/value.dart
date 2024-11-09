@@ -5,7 +5,7 @@ class Value {
   // named value
   Map<String, String> namedValues = {};
 
-  // Default empty constructor
+  /// Default empty constructor
   Value() {}
 
   /// Constructor by String
