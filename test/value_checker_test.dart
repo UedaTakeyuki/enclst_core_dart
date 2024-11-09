@@ -2,7 +2,7 @@ import 'package:enclst_core_dart/enclst_core_dart.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  final e = Enclst("");
+  final e = Enclst();
   test('test isPath', () {
     expect(e.isPath("http://ahoaho"), true);
     expect(e.isPath("https://ahoaho"), true);

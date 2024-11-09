@@ -62,40 +62,19 @@
 
     <section class="multi-line-signature">
       
-      <span class="name ">Enclst</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="-param-enclstStr"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">enclstStr</span></span></li>
-</ol>)
+      <span class="name ">Enclst</span>(<wbr>)
     </section>
 
     
+<section class="desc markdown">
+  <p>Default empty constuctor</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Enclst(String enclstStr) {
-  final re = RegExp(r&#39;\r\n|\n&#39;);
-  List&lt;String&gt; lines = enclstStr.split(re);
-  title = lines[0];
-
-  &#47;&#47; find a blank line
-  while (lines.isNotEmpty) {
-    if (lines[0] == &quot;&quot;) {
-      &#47;&#47; remove blank line
-      lines.removeAt(0);
-      break;
-    }
-    lines.removeAt(0);
-  }
-
-  &#47;&#47; make items
-  while (lines.isNotEmpty) {
-    var line = lines[0];
-    if (line != &quot;&quot;) {
-      items.add(Item.byStr(lines[0]));
-    }
-    lines.removeAt(0);
-  }
-}</code></pre>
+  <pre class="language-dart"><code class="language-dart">Enclst() {}</code></pre>
 </section>
 
 

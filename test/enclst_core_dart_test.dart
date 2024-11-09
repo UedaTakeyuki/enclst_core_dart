@@ -28,6 +28,6 @@ Future<Enclst> enclstFromURL(String urlStr) async {
   var uri = Uri.parse(urlStr);
   var response = await http.get(uri);
   var enclistStr = response.body;
-  final enclst = Enclst(enclistStr);
+  final enclst = Enclst.byStr(enclistStr);
   return enclst;
 }

@@ -12,8 +12,11 @@ class Enclst with ValueChecker, FilePath {
   String title = "";
   List<Item> items = [];
 
-  // Constructor
-  Enclst(String enclstStr) {
+  /// Default empty constuctor
+  Enclst() {}
+
+  /// Constructor by enclst String
+  Enclst.byStr(String enclstStr) {
     final re = RegExp(r'\r\n|\n');
     List<String> lines = enclstStr.split(re);
     title = lines[0];
@@ -38,12 +41,12 @@ class Enclst with ValueChecker, FilePath {
     }
   }
 
-  // Static creator
+  /// Static creator by URL string
   static Future<Enclst> createFromURL(String urlStr) async {
     var uri = Uri.parse(urlStr);
     var response = await http.get(uri);
     var enclistStr = response.body;
-    final enclst = Enclst(enclistStr);
+    final enclst = Enclst.byStr(enclistStr);
     enclst.filepath = urlStr;
     return enclst;
   }

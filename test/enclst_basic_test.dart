@@ -9,7 +9,7 @@ aho, baka, boke=kasu | aho
 ''';
 
 main() {
-  final Enclst enclst = Enclst(enclstStr);
+  final Enclst enclst = Enclst.byStr(enclstStr);
   test('Enclst', () {
     expect(enclst.title, "Test EncLst | Test EncLst");
     expect(enclst.items.length, 2);
