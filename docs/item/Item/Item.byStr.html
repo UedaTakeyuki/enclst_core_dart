@@ -80,20 +80,20 @@ So, only the first "|" in line string is the separator and other "|"s are only a
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Item.byStr(String line) {
   if (&quot;&quot; == line) {
-    value = Value(&quot;&quot;);
+    value = Value();
   } else {
     List&lt;String&gt; separatedLine = line.split(&#39;|&#39;);
     switch (separatedLine.length) {
       case 1:
-        value = Value(separatedLine[0].trim());
+        value = Value.byStr(separatedLine[0].trim());
         title = &quot;&quot;;
         break;
       case 2:
-        value = Value(separatedLine[0].trim());
+        value = Value.byStr(separatedLine[0].trim());
         title = separatedLine[1].trim();
         break;
       default:
-        value = Value(separatedLine[0].trim());
+        value = Value.byStr(separatedLine[0].trim());
         separatedLine.removeAt(0);
         title = separatedLine.join(&#39;|&#39;).trim();
         break;

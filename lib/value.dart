@@ -5,7 +5,11 @@ class Value {
   // named value
   Map<String, String> namedValues = {};
 
-  Value(String valueStr) {
+  // Default empty constructor
+  Value() {}
+
+  /// Constructor by String
+  Value.byStr(String valueStr) {
     if ("" != valueStr) {
       var values = valueStr.split(',');
       for (var i = 0; i < values.length; i++) {
