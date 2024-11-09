@@ -26,4 +26,36 @@ class Value {
       }
     }
   }
+
+  /// Does this object has positional params?
+  bool hasPositinalParams() {
+    if (0 == positionalValues.length) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  /// Does this object has named params?
+  bool hasNamedParams() {
+    if (0 == namedValues.length) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  /// Does this object has any params?
+  bool hasParams() {
+    return hasPositinalParams() || hasNamedParams();
+  }
+
+  /// The first positional value
+  String? first() {
+    if (hasPositinalParams()) {
+      return positionalValues[0];
+    } else {
+      return null;
+    }
+  }
 }
