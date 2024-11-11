@@ -52,7 +52,7 @@ class Enclst with ValueChecker, FilePath {
   }
 
   // next Enclst
-  nextEnclst(String path, {String v_root = ""}) async {
+  Future<Enclst> nextEnclst(String path, {String v_root = ""}) async {
     final nextfilepath = nextFilePath(path, v_root: v_root);
     return await createFromURL(nextfilepath);
   }

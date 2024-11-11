@@ -58,5 +58,8 @@ from the package authors, and more.
 ## API
 latest document is available [here](https://uedatakeyuki.github.io/enclst_core_dart/).
 
+## Source
+The repository is [UedaTakeyuki/enclst_core_dart](https://github.com/UedaTakeyuki/enclst_core_dart).
+
 ## History
 - 0.1.0 2024.10.29 created from scratch.
