@@ -7,9 +7,9 @@ import 'package:flutter/foundation.dart';
 mixin ValueChecker {
   /// Is this URL?
   bool isURL(String s) {
-    if (s.substring(0, 6) == "http://" ||
-        s.substring(0, 7) == "https://" ||
-        s.substring(0, 6) == "file://") {
+    if (s.substring(0, 7) == "http://" ||
+        s.substring(0, 8) == "https://" ||
+        s.substring(0, 7) == "file://") {
       return true;
     } else {
       return false;

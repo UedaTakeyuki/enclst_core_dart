@@ -11,6 +11,14 @@ void main() {
     expect(e.isPath("/ahoaho/boke"), true);
     expect(e.isPath("ahoahoboke"), false);
   });
+  test('test isURL', () {
+    expect(e.isURL("http://ahoaho"), true);
+    expect(e.isURL("https://ahoaho"), true);
+    expect(e.isURL("ahoaho/boke"), false);
+    expect(e.isURL("./ahoaho/boke"), false);
+    expect(e.isURL("/ahoaho/boke"), false);
+    expect(e.isURL("ahoahoboke"), false);
+  });
   test("test isEnclst", () {
     expect(e.isEnclst("aho.enclst"), true);
     expect(e.isEnclst('aho.enclist'), false);
