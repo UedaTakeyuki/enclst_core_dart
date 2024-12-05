@@ -10,6 +10,8 @@ class Value {
 
   /// Constructor by String
   Value.byStr(String valueStr) {
+    readStr(valueStr);
+    /*
     if ("" != valueStr) {
       var values = valueStr.split(',');
       for (var i = 0; i < values.length; i++) {
@@ -25,6 +27,7 @@ class Value {
         }
       }
     }
+    */
   }
 
   /// Does this object has positional params?
@@ -57,5 +60,25 @@ class Value {
     } else {
       return null;
     }
+  }
+
+  Value readStr(String valueStr) {
+    if ("" != valueStr) {
+      var values = valueStr.split(',');
+      for (var i = 0; i < values.length; i++) {
+        values[i] = values[i].trim();
+
+        // push to positional
+        positionalValues.add(values[i]);
+
+        var nameAndValue = positionalValues[i].split('=');
+        if (nameAndValue.length == 2) {
+          // set this as named
+          namedValues[nameAndValue[0].trim()] = nameAndValue[1].trim();
+        }
+      }
+    }
+
+    return this;
   }
 }

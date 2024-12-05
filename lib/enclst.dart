@@ -1,5 +1,7 @@
 // import 'package:enclst_core_dart/generating_file.dart';
 import 'package:enclst_core_dart/mixins/filepath.dart';
+import 'package:enclst_core_dart/value.dart';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:enclst_core_dart/item.dart';
 import 'package:enclst_core_dart/mixins/value_checker.dart';
@@ -11,6 +13,7 @@ import 'package:enclst_core_dart/mixins/filepath.dart';
 class Enclst with ValueChecker, FilePath {
   String title = "";
   List<Item> items = [];
+  Value value = Value();
 
   /// Default empty constuctor
   Enclst() {}
@@ -21,14 +24,20 @@ class Enclst with ValueChecker, FilePath {
     List<String> lines = enclstStr.split(re);
     title = lines[0];
 
+    // Delete the first line, which is title.
+    lines.removeAt(0);
+
     // find a blank line
     while (lines.isNotEmpty) {
       if (lines[0] == "") {
         // remove blank line
         lines.removeAt(0);
         break;
+      } else {
+        // append to value
+        value.readStr(lines[0]);
+        lines.removeAt(0);
       }
-      lines.removeAt(0);
     }
 
     // make items

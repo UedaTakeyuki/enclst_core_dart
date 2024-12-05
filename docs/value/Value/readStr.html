@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the Enclst.byStr constructor from Class Enclst from the enclst library, for the Dart programming language.">
-  <title>Enclst.byStr constructor - Enclst - enclst library - Dart API</title>
+  <meta name="description" content="API docs for the readStr method from the Value class, for the Dart programming language.">
+  <title>readStr method - Value class - value library - Dart API</title>
 
 
   
@@ -29,11 +29,11 @@
   <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">enclst_core_dart</a></li>
-    <li><a href="../../enclst/enclst-library.html">enclst.dart</a></li>
-    <li><a href="../../enclst/Enclst-class.html">Enclst</a></li>
-    <li class="self-crumb">Enclst.byStr constructor</li>
+    <li><a href="../../value/value-library.html">value.dart</a></li>
+    <li><a href="../../value/Value-class.html">Value</a></li>
+    <li class="self-crumb">readStr method</li>
   </ol>
-  <div class="self-name">Enclst.byStr</div>
+  <div class="self-name">readStr</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -51,59 +51,49 @@
 </header>
 <main>
 
-  <div
-      id="dartdoc-main-content"
-      class="main-content"
-      data-above-sidebar="enclst&#47;Enclst-class-sidebar.html"
-      data-below-sidebar="">
-      <div>
-<h1><span class="kind-constructor">Enclst.byStr</span> constructor 
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="value&#47;Value-class-sidebar.html"
+    data-below-sidebar="">
+    <div>
+<h1><span class="kind-method">readStr</span> method 
 </h1></div>
 
     <section class="multi-line-signature">
       
-      <span class="name ">Enclst.byStr</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="byStr-param-enclstStr"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">enclstStr</span></span></li>
-</ol>)
-    </section>
 
+<span class="returntype"><a href="../../value/Value-class.html">Value</a></span>
+<span class="name ">readStr</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="readStr-param-valueStr"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">valueStr</span></span></li>
+</ol>)
+
+      
+
+    </section>
     
-<section class="desc markdown">
-  <p>Constructor by enclst String</p>
-</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Enclst.byStr(String enclstStr) {
-  final re = RegExp(r&#39;\r\n|\n&#39;);
-  List&lt;String&gt; lines = enclstStr.split(re);
-  title = lines[0];
+  <pre class="language-dart"><code class="language-dart">Value readStr(String valueStr) {
+  if (&quot;&quot; != valueStr) {
+    var values = valueStr.split(&#39;,&#39;);
+    for (var i = 0; i &lt; values.length; i++) {
+      values[i] = values[i].trim();
 
-  &#47;&#47; Delete the first line, which is title.
-  lines.removeAt(0);
+      &#47;&#47; push to positional
+      positionalValues.add(values[i]);
 
-  &#47;&#47; find a blank line
-  while (lines.isNotEmpty) {
-    if (lines[0] == &quot;&quot;) {
-      &#47;&#47; remove blank line
-      lines.removeAt(0);
-      break;
-    } else {
-      &#47;&#47; append to value
-      value.readStr(lines[0]);
-      lines.removeAt(0);
+      var nameAndValue = positionalValues[i].split(&#39;=&#39;);
+      if (nameAndValue.length == 2) {
+        &#47;&#47; set this as named
+        namedValues[nameAndValue[0].trim()] = nameAndValue[1].trim();
+      }
     }
   }
 
-  &#47;&#47; make items
-  while (lines.isNotEmpty) {
-    var line = lines[0];
-    if (line != &quot;&quot;) {
-      items.add(Item.byStr(lines[0]));
-    }
-    lines.removeAt(0);
-  }
+  return this;
 }</code></pre>
 </section>
 
@@ -120,18 +110,18 @@
 
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
     <li><a href="../../index.html">enclst_core_dart</a></li>
-    <li><a href="../../enclst/enclst-library.html">enclst</a></li>
-    <li><a href="../../enclst/Enclst-class.html">Enclst</a></li>
-    <li class="self-crumb">Enclst.byStr constructor</li>
+    <li><a href="../../value/value-library.html">value</a></li>
+    <li><a href="../../value/Value-class.html">Value</a></li>
+    <li class="self-crumb">readStr method</li>
 </ol>
 
 
-    <h5>Enclst class</h5>
+    <h5>Value class</h5>
     <div id="dartdoc-sidebar-left-content"></div>
-  </div><!--/.sidebar-offcanvas-left-->
+  </div><!--/.sidebar-offcanvas-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
-  </div><!--/.sidebar-offcanvas-->
+</div><!--/.sidebar-offcanvas-->
 
 </main>
 

@@ -76,6 +76,8 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Value.byStr(String valueStr) {
+  readStr(valueStr);
+  &#47;*
   if (&quot;&quot; != valueStr) {
     var values = valueStr.split(&#39;,&#39;);
     for (var i = 0; i &lt; values.length; i++) {
@@ -91,6 +93,7 @@
       }
     }
   }
+  *&#47;
 }</code></pre>
 </section>
 

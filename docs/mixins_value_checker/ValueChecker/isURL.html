@@ -80,9 +80,9 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">bool isURL(String s) {
-  if (s.substring(0, 6) == &quot;http:&#47;&#47;&quot; ||
-      s.substring(0, 7) == &quot;https:&#47;&#47;&quot; ||
-      s.substring(0, 6) == &quot;file:&#47;&#47;&quot;) {
+  if (s.substring(0, 7) == &quot;http:&#47;&#47;&quot; ||
+      s.substring(0, 8) == &quot;https:&#47;&#47;&quot; ||
+      s.substring(0, 7) == &quot;file:&#47;&#47;&quot;) {
     return true;
   } else {
     return false;
