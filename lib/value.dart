@@ -62,6 +62,7 @@ class Value {
     }
   }
 
+  /// read value string if not ""
   Value readStr(String valueStr) {
     if ("" != valueStr) {
       var values = valueStr.split(',');
